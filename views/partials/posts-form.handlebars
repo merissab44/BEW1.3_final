@@ -1,0 +1,21 @@
+<fieldset>
+  <legend>{{title}}</legend>
+  <!-- HEADER -->
+    <div class="form-group">
+        <label for="post-title">Header title</label><br>
+        <input id="post-title" type="text" name="title" value="{{post.title}}"/>
+    </div>
+
+
+  <!-- NAME OF RESTAURANT    -->
+  <div class="form-group">
+    <label for="restaurant-name">Name of Restaurant</label><br>
+    <input id="restaurant-name" type="text" name="restaurantname" value="{{post.restaurantName}}" />
+  </div>
+
+  <!-- REVIEW -->
+  <div class="form-group">
+    <label for="post-description">Review</label><br>
+    <textarea id="post-description" name="description" rows="10" />{{post.description}}</textarea>
+  </div>
+</fieldset>

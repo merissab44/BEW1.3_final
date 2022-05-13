@@ -1,0 +1,13 @@
+
+{{> navbar }}
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <form method="POST" action="/posts/{{post._id}}?_method=PUT">
+            {{> posts-form}}
+            <!-- BUTTON -->
+            <p>
+                <button type="submit">Save Edit</button>
+            </p>
+        </form>
+    </div>
+</div>
