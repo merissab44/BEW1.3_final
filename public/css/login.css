@@ -12,7 +12,7 @@ input {
 }
 
 #left {
-    background-color: rgb(255, 69, 0);
+    background-color: #013220;
     height: 100vh;
 }
 
@@ -45,7 +45,7 @@ legend {
 }
 
 .btn-primary {
-    background-color: rgb(255, 69, 0);
+    background-color: #013220;
     border: none;
     width: 120px;
     float: right;
@@ -57,7 +57,7 @@ legend {
 }
 
 a {
-    color: rgb(255, 69, 0);
+    color: #013220;
     text-decoration: none;
     margin-left: 25%;
 }
