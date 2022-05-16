@@ -1,20 +1,16 @@
-
-<a href="/">Back to Home</a>
-{{> navbar }}
 <div class="row">
 {{#each post}}
-<div class="col-sm-6 col-sm-offset-3">
-<h1>{{this.title}}</h1>
-<h2>{{this.restaurantName}}</h2>
-<p>{{this.description}}</p>
-</div>
+{{> post}}
 <p><a href="/posts/{{{this._id}}}/edit">Edit</a></p>
 <p><form method="POST" action="/posts/{{{this._id}}}?_method=DELETE">
     <button type="submit">Delete</button>
 {{/each}}
 
 {{!-- show comment form --}}
+{{!-- if theres a post, render comment form --}}
+{{#if post}}
 {{> comment-form}}
+{{/if}}
 
 <hr>
 {{#each comments}}

@@ -1,13 +1,14 @@
 const User = require('../models/user');
+require('../controllers/posts.js');
 const jwt = require('jsonwebtoken');
 
 module.exports = app => {
 
     // SIGN UP FORM
-    app.get('/', (req, res) => res.render('sign-up'));
+    app.get('/', (req, res) => res.render('sign-up', {layout: 'auth'}));
 
     // SIGN UP POST
-    app.post('/', (req, res) => {
+    app.post('/sign-up', (req, res) => {
         // Create User and JWT
         const user = new User(req.body);
         user
@@ -15,7 +16,7 @@ module.exports = app => {
             .then(() => {
                 const token = jwt.sign({ _id: user._id }, process.env.SECRET, { expiresIn: '60 days' });
                 res.cookie('nToken', token, { maxAge: 900000, httpOnly: true });
-                return res.redirect('/');
+                return res.redirect('/posts-index');
             })
             .catch((err) => {
                 console.log(err.message);
@@ -30,7 +31,7 @@ module.exports = app => {
     });
 
     // LOGIN FORM
-    app.get('/login', (req, res) => res.render('login'));
+    app.get('/login', (req, res) => res.render('login', {layout: 'auth'}));
 
     // LOGIN
     app.post('/login', (req, res) => {
@@ -46,7 +47,7 @@ module.exports = app => {
                 user.comparePassword(password, (err, isMatch) => {
                     if (!isMatch) {
                         // Password does not match
-                        return res.status(401).send({ message: 'Wrong Username or password' });
+                        return res.status(401).send('Wrong Username or password');
                     }
                     // Create a token
                     const token = jwt.sign({ _id: user._id, username: user.username }, process.env.SECRET, {
@@ -54,7 +55,7 @@ module.exports = app => {
                     });
                     // Set a cookie and redirect to root
                     res.cookie('nToken', token, { maxAge: 900000, httpOnly: true });
-                    return res.redirect('/');
+                    return res.redirect('/posts-index');
                 });
             })
             .catch((err) => {

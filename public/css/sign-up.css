@@ -12,8 +12,23 @@ input {
 }
 
 #welcome {
-    background-color: rgb(255, 69, 0);
+    background-image: url('../images/food-header.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     height: 100vh;
+}
+#background{
+    text-align: center;
+    background-color: white;
+    height: 30%;
+    margin-top: 45%;
+    opacity: 0.6;
+    border-radius: 55px;
+}
+.title{
+    color: black;
+    padding-top: 12%;
 }
 
 .container {
@@ -21,17 +36,14 @@ input {
     margin-right: 0 !important;
 }
 
-.title {
-    font-size: 40px;
-    color: white;
-    text-align: center;
-    margin-top: 45%;
-}
-
 legend {
     text-align: center;
     margin-bottom: 50px;
     font-size: 30px;
+}
+small{
+    font-weight: bold;
+    font-size: 16px;
 }
 
 .form-control {

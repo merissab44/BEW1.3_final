@@ -61,8 +61,8 @@ app.put('/posts/:id', (req, res) => {
 app.get('/posts/:id', (req, res) => {
   Post.find().lean().then((post) => {
     // fetch comments for this review
-    Comment.find({ postId: req.params.id }).lean().then((comments) => {
-    res.render('posts-show', { post: post, comments:comments })
+  Comment.find({ postId: req.params.id }).lean().then((comments) => {
+  res.render('posts-show', { post: post, comments:comments })
   })
 }).catch((err) => {
     console.log(err.message);
@@ -72,7 +72,7 @@ app.get('/posts/:id', (req, res) => {
   app.delete('/posts/:id', function (req, res) {
     console.log('delete post')
     Post.findByIdAndRemove(req.params.id).then((post) => {
-      res.redirect('/');
+      res.redirect('/posts-show');
     }).catch((err) => {
       console.log(err.message);
     })
