@@ -2,6 +2,9 @@
 {{#each post}}
 {{> post}}
 <p><a href="/posts/{{{this._id}}}/edit">Edit</a></p>
+<form class="favorite" data-id="{{this._id}}">
+    <button><span>👍</span></button>
+</form>
 <p><form method="POST" action="/posts/{{{this._id}}}?_method=DELETE">
     <button type="submit">Delete</button>
 {{/each}}

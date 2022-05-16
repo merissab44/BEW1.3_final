@@ -68,6 +68,19 @@ app.get('/posts/:id', (req, res) => {
     console.log(err.message);
   })
 })
+
+app.put('/posts/:id/favorite', (req, res) => {
+  Post.findById(req.params.id).then(post => {
+    post.favorites.push(req.user._id);
+    post.favoriteScore += 1;
+    post.save();
+    res.redirect(`/posts/${post._id}`);
+    return res.status(200);
+  }).catch(err => {
+    console.log(err.message);
+    res.status(400).send("Error saving favorite");
+  });
+})
 // DELETE
   app.delete('/posts/:id', function (req, res) {
     console.log('delete post')
